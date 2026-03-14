@@ -1,0 +1,1137 @@
+/* ===============================
+   FUNDO PRINCIPAL
+================================ */
+body {
+    background-image: url("backgroundimage.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===============================
+   SILHUETAS / BRILHOS FLUTUANTES
+   (subida diagonal contínua)
+================================ */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 200%;
+    height: 15vh;
+    pointer-events: none;
+    z-index: 1;
+
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,0.18) 3px, transparent 2px),
+        radial-gradient(circle, rgba(255,255,255,0.12) 2px, transparent 1px);
+
+    background-size:
+        200px 200px,
+        200px 200px;
+
+    background-position:
+        0 0,
+        0 0;
+
+    animation: confetti-diagonal 14s linear infinite;
+}
+
+/* camada secundária – mais lenta e profunda */
+body::after {
+    animation-duration: 50s;
+    opacity: 0.9;
+}
+
+@keyframes confetti-diagonal {
+    0% {
+        background-position:
+            0 0,
+            0 0;
+    }
+    25% {
+        background-position:
+            12px -22px,
+            8px -32px;
+    }
+    50% {
+        background-position:
+            26px -45px,
+            18px -65px;
+    }
+    75% {
+        background-position:
+            40px -68px,
+            30px -98px;
+    }
+    100% {
+        background-position:
+            54px -90px,
+            42px -130px;
+    }
+}
+/* ===============================
+   ANIMAÇÃO FOTO HOME
+================================ */
+@keyframes homePhotoFade {
+    0% {
+        opacity: 0;
+        transform: translateX(120px);
+    }
+
+    100% {
+        opacity: 0.65;
+        transform: translateX(0);
+    }
+}
+/* ===============================
+   SIDEBAR FLUTUANTE
+================================ */
+.sidebar {
+    position: fixed;
+    top: 50%;
+    left: 24px;
+    transform: translateY(-50%);
+    background: #ffffff;
+    padding: 16px 12px;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    z-index: 1000;
+}
+
+/* ===============================
+   BOTÕES DA SIDEBAR – ROXO FORTE
+================================ */
+.nav-item {
+    width: 54px;
+    height: 54px;
+    border-radius: 30px;
+    background: #eeeeee;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 18px;
+    color: #555;
+    font-size: 20px;
+    text-decoration: none;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Ícone */
+.nav-item i {
+    min-width: 20px;
+    text-align: center;
+}
+
+/* Texto escondido */
+.nav-item span {
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+    font-size: 14px;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* Hover */
+.nav-item:hover {
+    width: 160px;
+    background: #4a148c; /* roxo escuro sólido */
+    color: #ffffff;
+}
+
+/* Revela texto */
+.nav-item:hover span {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Página ativa */
+.nav-item.active {
+    background: #5a189a; /* roxo principal */
+    color: #ffffff;
+}
+/* ===============================
+   TEXTO PRINCIPAL (HERO)
+================================ */
+.hero-text {
+    position: fixed;
+    top: 50%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #ffffff;
+    z-index: 2;
+    font-family: "Poppins", Arial, sans-serif;
+
+    opacity: 0;
+    animation: fadeInHero 1.0s ease forwards;
+}
+
+/* Frase em inglês */
+.hero-text h1 {
+    font-size: 2.6rem;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: 1px;
+
+    text-shadow:
+        0 0 12px rgba(255,255,255,0.25),
+        0 0 25px rgba(255,255,255,0.15);
+}
+
+/* Linha decorativa */
+.hero-line {
+    width: 120px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.85);
+    margin: 18px auto;
+    border-radius: 2px;
+    transform: translateY(-30px); /* sobe a logo */
+}
+
+/* Frase em português */
+.hero-text p {
+    font-size: 1.9rem;
+    font-weight: 300;
+    font-style: italic;
+    margin: 0;
+    opacity: 0.9;
+    letter-spacing: 0.5px;
+    transform: translateY(-30px); /* sobe a logo */
+}
+
+/* ===============================
+   ANIMAÇÃO FADE IN
+================================ */
+@keyframes fadeInHero {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.7);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+@keyframes slideFadeLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-300px) rotate(-3deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(50px) rotate(-3deg);
+    }
+}
+/* ===============================
+   FOOTER – CONTATOS
+================================ */
+.contact-footer {
+    position: fixed;
+    bottom: 24px;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    text-align: center;
+
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+    font-weight: 300;
+    font-family: "Poppins", Arial, sans-serif;
+    line-height: 1.5;
+
+    z-index: 2;
+}
+
+/* Espaçamento entre blocos */
+.contact-footer p {
+    margin: 6px 0;
+}
+
+/* Destaque sutil nos títulos */
+.contact-footer a {
+    color: #ffffff !important;
+    text-decoration: none;
+    margin: 0 8px;
+    transition: opacity 0.3s ease;
+}
+/* ===============================
+   FOTO DA PROFESSORA – CONTATOS
+================================ */
+.contact-prof-photo {
+    position: fixed;
+    bottom: 0px;      /* mesma altura do footer */
+    left: 1000px;       /* ajuste horizontal (mais à direita do texto) */
+
+    width: 90px;       /* tamanho da foto */
+    height: auto;
+
+    z-index: 2;
+}
+
+.contact-prof-photo img {
+    width: 250%;
+    height: auto;
+    display: block;
+}
+/* ===============================
+   TÍTULO DAS PÁGINAS
+================================ */
+.page-title {
+    margin-top: 28px;
+    margin-bottom: 18px;   /* 👈 bem mais próximo do conteúdo */
+    text-align: center;
+
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    opacity: 0.95;
+
+    font-family: "Poppins", Arial, sans-serif;
+}
+/* ===============================
+   FORMULÁRIO DE CONTATO
+================================ */
+
+.contact-form {
+    max-width: 420px;
+    margin: 24px auto 0 auto;   /* 👈 AJUSTE AQUI (distância do título) */
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    z-index: 2;
+    position: relative;
+    font-family: "Poppins", Arial, sans-serif;
+}
+
+/* Campos */
+.contact-form input,
+.contact-form textarea {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 8px;
+    padding: 12px 14px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+/* Placeholder */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+/* Foco */
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #ffffff;
+    background: rgba(255, 255, 255, 0.22);
+}
+
+/* Botão */
+.contact-form button {
+    margin-top: 10px;
+    padding: 12px;
+    border: none;
+    border-radius: 30px;
+    background: #4a148c;
+    color: #ffffff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contact-form button:hover {
+    background: #670cd6;
+    transform: scale(1.03);
+}
+
+/* Evita rolagem desnecessária na página de contatos */
+body.contacts-page {
+    overflow: hidden;
+}
+/* ===============================
+   IMAGEM LATERAL – HOME (PROFESSORA)
+================================ */
+body.home .home-image {
+    position: fixed;
+    right: 5px;
+    bottom: 0;
+
+    height: 88vh;
+
+    z-index: 2;
+    pointer-events: none;
+
+    opacity: 0;
+
+    animation: homePhotoFade 1.6s ease forwards;
+}
+body.home .home-image {
+    transition: transform 0.25s ease-out;
+}
+
+body.home .home-image img {
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+}
+/* ===============================
+   LOGO – HOME (ACIMA DO HERO)
+================================ */
+body.home .hero-logo {
+    width: 50%;
+    margin: 0 auto 15px auto; /* centraliza e cria espaço abaixo */
+    transform: translateY(-20px); /* sobe a logo */
+}
+
+body.home .hero-logo img {
+    width: 70%;
+    height: auto;
+    display: block;
+    margin: 0 auto 15px auto;
+}
+/* ===============================
+   LOGO DE FUNDO TRANSPARENTE
+================================ */
+.logo-fundo {
+    position: fixed;           /* Mantém no mesmo lugar mesmo com rolagem */
+    top: 50%;                  /* Centraliza verticalmente */
+    left: 50%;                 /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%); /* Ajuste fino para centralizar exatamente */
+    width: 500px;              /* Ajuste o tamanho da logo */
+    height: 500px;
+    background-image: url('logo.png'); /* Caminho da logo da professora */
+    background-size: contain;   /* Ajusta sem deformar */
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.2;              /* Transparência suave */
+    pointer-events: none;       /* Não bloqueia cliques em outros elementos */
+    z-index: 0;                 /* Atrás de todo o conteúdo */
+}
+/* ===============================
+   PROFILE – TEXTO
+================================ */
+body.profile-page .profile-text {
+    max-width: 1200px;
+    margin: -110px auto 0 auto;
+    padding: 0 70px 0 100px;
+    color: #ffffff;
+    font-family: "Poppins", Arial, sans-serif;
+    position: relative;
+    z-index: 2;
+
+    transform: translateX(60px);
+}
+
+body.profile-page .profile-text p {
+    font-size: 1.50rem;
+    line-height: 1.9;
+    margin-bottom: 22px;
+    font-weight: 300;
+    text-align: justify;
+    text-justify: inter-word;
+    opacity: 0.95;
+}
+/* ===============================
+   PROFILE – LAYOUT FOTO + TEXTO
+================================ */
+.profile-content {
+    max-width: 1300px;
+    margin: 140px auto 0 auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 60px;
+    padding: 0 40px;
+    position: relative;
+    z-index: 2;
+}
+
+/* ===============================
+   FOTO ESTILO POLAROID
+================================ */
+.profile-photo {
+    background: #ffffff;
+    padding: 14px 14px 38px 14px;
+    width: 280px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    transform: rotate(-3deg) translateX(50px);
+    text-align: center;
+    font-family: "Poppins", Arial, sans-serif;
+
+    opacity: 0;
+    animation: slideFadeLeft 1.6s ease forwards;
+}
+
+.profile-photo img {
+    width: 100%;
+    display: block;
+    border-radius: 2px;
+}
+/* ===============================
+   AJUSTE DO TEXTO AO LADO
+================================ */
+.profile-text {
+    flex: 1;
+    padding: 0;
+}
+/* ===============================
+   CARROSSEL DE FOTOS
+================================= */
+#portfolio-carousel {
+    text-align: center;
+    padding: 20px 0;
+    background-color: transparent; /* barra transparente */
+}
+
+#portfolio-carousel h2 {
+    margin-bottom: 15px;
+    font-family: Arial, sans-serif;
+}
+
+.carousel-container {
+    position: relative;
+    width: 70%;
+    margin: 0 0 0 21%;
+    overflow: hidden;
+}
+
+.carousel-slide {
+    display: flex;
+    justify-content: center; /* centraliza as imagens */
+    gap: 5px; /* espaço entre cada imagem */
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    position: relative;
+}
+
+.carousel-slide img {
+    width: 270px;       /* largura fixa */
+    height: 180px;      /* altura fixa */
+    border-radius: 5px;
+    object-fit: cover;   /* preenche a caixa cortando partes se necessário */
+    object-position: center -10px; /* centraliza o conteúdo da imagem */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.polaroid-box {
+    position: fixed;
+    width: 150px;
+    height: 190px;
+
+    background-color: #ffffff;
+    background-image: url("sua-imagem.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    font-family: "Poppins", Arial, sans-serif;
+
+    transition: transform 0.3s ease;
+    z-index: 5;
+
+    overflow: hidden;
+}
+
+/* ===============================
+   POLAROID BASE
+================================ */
+.polaroid-box {
+    position: fixed;
+    width: 150px;
+    height: 190px;
+
+    background: #ffffff;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    font-family: "Poppins", Arial, sans-serif;
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 5;
+
+    overflow: hidden;
+}
+
+/* ===============================
+   CONTEÚDO INTERNO DA POLAROID
+================================ */
+.polaroid-content {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 14px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* TEXTO DENTRO DA POLAROID */
+.polaroid-content p {
+    margin: 0;
+
+    font-size: 10pt;
+    line-height: 1.4;
+    color: #222;
+
+    word-break: break-word;
+}
+
+/* ===============================
+   POSICIONAMENTO LATERAL
+================================ */
+.polaroid-left {
+    left: 200px;
+}
+
+.polaroid-right {
+    right: 200px;
+}
+
+/* ===============================
+   HOVER
+================================ */
+.polaroid-box:hover {
+    transform: scale(1.05) rotate(0deg);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+/* ===============================
+   SERVICES SECTION
+================================= */
+
+.services-section {
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin-left: 346px; /* mantém deslocado da sidebar */
+    margin-right: auto;
+    font-family: "Poppins", Arial, sans-serif;
+}
+
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* sempre 2 por linha */
+    gap: 30px;
+}
+
+.service-box {
+    background: transparent;
+    border: 2px solid #ffffff;
+    border-radius: 15px;
+    padding: 20px;
+    min-height: 100px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    backdrop-filter: blur(4px);
+    transition: 0.3s ease;
+}
+
+.service-box:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.service-box .icon {
+    font-size: 32px;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.service-box h4 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.service-box p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #ffffff;
+    max-width: 90%;
+}
+/* =================================
+   RESPONSIVIDADE – TABLETS (IPAD)
+================================= */
+@media (max-width: 1024px) {
+
+    /* polaroids menores */
+    .polaroid-box {
+        width: 120px;
+        height: 150px;
+    }
+
+    .polaroid-content p {
+        font-size: 9pt;
+    }
+
+/* =========================
+   POLAROIDS – TABLET
+========================= */
+
+.polaroid-box {
+
+    left: auto;
+
+}
+
+.polaroid-left {
+
+    right: 2%;
+    top: 50%;
+
+}
+
+.polaroid-right {
+
+    right: 2%;
+    margin-top: -60px; /* separa verticalmente */
+
+}
+/* =========================
+   TEXTO DAS POLAROIDS – TABLET
+========================= */
+
+.polaroid-content p {
+
+    font-size: 8pt;
+    line-height: 1.2;
+
+}
+
+    /* texto profile mais confortável */
+    body.profile-page .profile-text {
+        padding: 0 40px;
+        transform: translateX(0);
+    }
+
+    /* services mais centralizados */
+    .services-section {
+        margin-left: 160px;
+        max-width: 700px;
+    }
+
+    .services-container {
+        gap: 20px;
+    }
+
+    /* foto da professora menor */
+    body.home .home-image {
+        height: 70vh;
+    }
+
+    /* =========================
+       LINKS DO INDEX – TABLET
+    ========================= */
+
+    body.home .contact-footer {
+
+        position: fixed;
+
+        bottom: 20px;
+        left: 50%;
+
+        transform: translateX(-50%);
+
+        text-align: center;
+
+        width: 100%;
+
+        font-size: 1rem;
+
+        z-index: 999;
+
+    }
+
+    /* =========================
+       FOOTER CONTACTS – TABLET
+    ========================= */
+
+    .contact-footer {
+
+        position: fixed;
+
+        bottom: 20px;
+        left: 50%;
+
+        transform: translateX(-50%);
+
+        text-align: center;
+
+        width: 85%;
+
+        font-size: 0.95rem;
+
+        z-index: 999;
+
+    }
+
+}
+/* =================================
+   RESPONSIVIDADE – CELULAR
+================================= */
+@media (max-width: 768px) {
+
+/* =========================
+   AJUSTE HERO – MOBILE
+========================= */
+
+.hero-text {
+
+    top: 42%;
+
+}
+
+/* =========================
+   AJUSTE LOGO – MOBILE
+========================= */
+
+body.home .hero-logo {
+    transform: translateY(-60px);
+}
+
+    /* remove elementos decorativos */
+    .polaroid-box {
+        display: none;
+    }
+
+    body.home .home-image {
+        display: none;
+    }
+
+    .contact-prof-photo {
+        display: none;
+    }
+
+/* =========================
+   FOTO DA PROFESSORA – FUNDO INDEX MOBILE
+========================= */
+
+body.home::before {
+
+    content: "";
+
+    position: fixed;
+
+    bottom: 0;
+    left: 0;
+
+    width: 153%;
+    height: 100vh;
+
+    background-image: url("Isa livro.png"); /* mesma foto usada no INDEX */
+
+    background-size: 500px;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+
+    opacity: 0.25;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    animation: none; /* REMOVE A ANIMAÇÃO DAS SILHUETAS */
+
+}
+
+/* garante que o texto fique acima da imagem */
+
+.hero-text,
+.hero-logo {
+
+    position: relative;
+    z-index: 2;
+
+}
+
+/* =========================
+   LINKS DA PROFESSORA – INDEX MOBILE
+========================= */
+
+/* remove scroll apenas na INDEX mobile */
+@media (max-width: 768px) {
+
+body.home {
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* fixa os links no topo */
+body.home .contact-footer {
+
+    position: fixed;
+
+    top: 10px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    text-align: center;
+
+    width: 85%;
+
+    font-size: 0.95rem;
+
+    z-index: 999;
+
+}
+
+/* estilo dos links */
+
+.contact-footer a {
+
+    display: inline-block;
+
+    margin: 6px 10px;
+
+    font-size: 1rem;
+
+}
+
+}
+
+/* =========================
+   SIDEBAR MOBILE
+========================= */
+
+.sidebar {
+
+    position: fixed;
+
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+
+    top: auto;
+
+    flex-direction: row;
+
+    justify-content: space-around;
+
+    padding: 0px 0;
+
+    border-radius: 0;
+
+    margin: 0;
+
+    z-index: 9999;
+
+    transition: bottom 0.3s ease;
+
+    /* TRANSPARÊNCIA */
+    background: rgba(255, 255, 255, 0.70);
+
+    /* efeito vidro */
+    backdrop-filter: blur(0,5px);
+    -webkit-backdrop-filter: blur(0,5px);
+
+}
+
+
+/* quando chegar no final da página */
+.sidebar.up {
+
+    bottom: 60px;
+
+}
+
+.nav-item {
+
+    width: 25px;
+    height: 25px;
+
+    padding: 0;
+
+    justify-content: center;
+
+}
+
+.nav-item span {
+    display: none;
+}
+
+
+/* =========================
+   INDEX – CENTRALIZAR HERO
+========================= */
+
+.hero-text {
+
+    left: 50%;
+    width: 85%;
+
+}
+
+.hero-text h1 {
+
+    font-size: 1.9rem;
+
+}
+
+.hero-text p {
+
+    font-size: 1.35rem;
+
+}
+
+body.home .hero-logo img {
+
+    width: 85%;
+
+}
+
+
+/* =========================
+   PROFILE – CENTRALIZAR
+========================= */
+
+.profile-content {
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    gap: 30px;
+
+    margin-top: 80px;
+
+    padding: 0 25px;
+
+}
+
+.profile-photo {
+
+    transform: rotate(-2deg);
+
+}
+
+body.profile-page .profile-text {
+
+    margin: 0 auto;
+
+    padding: 0;
+
+    transform: none;
+
+}
+
+body.profile-page .profile-text p {
+
+    font-size: 1.1rem;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================
+   CONTACTS – FORMULÁRIO
+========================= */
+
+.contact-form {
+
+    display: flex;
+
+    width: 85%;
+
+    max-width: 420px;
+
+    margin: 20px auto;
+
+}
+
+.contact-form input,
+.contact-form textarea {
+
+    font-size: 0.95rem;
+
+}
+
+
+/* =========================
+   FOOTER CONTACTS MOBILE
+========================= */
+
+.contact-footer {
+
+    position: relative;
+
+    bottom: auto;
+    left: auto;
+
+    transform: none;
+
+    text-align: center;
+
+    margin: 25px auto 100px auto;
+
+    width: 85%;
+
+    font-size: 0.9rem;
+
+}
+
+
+/* =========================
+   SERVICES – MOBILE
+========================= */
+
+.services-section {
+
+    margin-left: auto;
+    margin-right: auto;
+
+    padding: 20px;
+
+}
+
+.services-container {
+
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+
+}
+
+.service-box {
+
+    width: 90%;
+
+    margin: 0 auto;
+
+}
+
+}

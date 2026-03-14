@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Seu CSS -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body class="contacts-page">
+
+    <!-- LOGO DE FUNDO TRANSPARENTE -->
+    <div class="logo-fundo"></div>
+
+    <!-- SIDEBAR -->
+    <header id="header">
+        <nav class="sidebar">
+
+            <a href="index.html" class="nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+
+            <a href="profile.html" class="nav-item">
+                <i class="fa-solid fa-user"></i>
+                <span>Profile</span>
+            </a>
+
+            <a href="portfolio.html" class="nav-item">
+                <i class="fa-regular fa-image"></i>
+                <span>Portfolio</span>
+            </a>
+
+        </nav>
+    </header>
+
+    <!-- TÍTULO DA PÁGINA -->
+    <div class="page-title">
+        <h1>Contact</h1>
+    </div>
+
+    <!-- FORMULÁRIO -->
+    <form class="contact-form" onsubmit="sendWhatsApp(event)">
+        <input type="text" id="name" placeholder="Your name" required>
+        <input type="email" id="email" placeholder="Your e-mail" required>
+        <input type="text" id="subject" placeholder="Subject" required>
+        <textarea id="message" placeholder="Your message" rows="5" required></textarea>
+
+        <button type="submit">
+            <i class="fa-brands fa-whatsapp"></i> Send via WhatsApp
+        </button>
+    </form>
+
+    <!-- POLAROID LATERAIS (FUNDO BRANCO COM CONTEÚDO) -->
+
+    <div class="polaroid-left polaroid-box" style="top: 350px; transform: rotate(2deg);">
+        <div class="polaroid-content">
+            <p>
+            "A teacher Isa ajudou com meu desenvolvimento na língua inglesa.
+            Me sentia insegura para falar e hoje consigo me comunicar melhor".<br>
+            <strong>Gabriela, 14 anos.</i></strong>  
+            </p>
+        </div>
+    </div>
+
+<div class="polaroid-right polaroid-box" style="top: 200px; transform: rotate(-2deg);">
+    <div class="polaroid-content">
+        <p><i>
+            "A teacher Isa ajudou com meu desenvolvimento na língua inglesa.
+            Me sentia insegura para falar e hoje consigo me comunicar melhor".<br>
+            <strong>Gabriela, 14 anos.</i></strong>
+        </p>
+    </div>
+</div>
+<div class="contact-prof-photo">
+    <img src="Isa em pe.png" alt="Professora">
+</div>
+
+    <!-- FOOTER -->
+    <footer class="contact-footer">
+        <p>
+            <strong>Endereço:</strong><br>
+            <i>Rua Doutor José Fernandes de Souza, nº155<br>
+            Chácara Primavera II, Pouso Alegre – MG, Brasil</i>
+        </p>
+
+        <p>
+            <strong>Telefone:</strong> <i>(35) 9 9120-6420</i><br>
+            <strong>E-mail:</strong> <i>isa.fluentenglush@gmail.com</i>
+        </p>
+    </footer>
+
+    <!-- SCRIPT WHATSAPP -->
+    <script>
+        function sendWhatsApp(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const subject = document.getElementById("subject").value.trim();
+            const message = document.getElementById("message").value.trim();
+
+            const phone = "5535991206420";
+
+            const text =
+`Hello! I would like to get in touch.
+
+Name: ${name}
+E-mail: ${email}
+Subject: ${subject}
+
+Message:
+${message}`;
+
+            const encodedText = encodeURIComponent(text);
+            const url = `https://wa.me/${phone}?text=${encodedText}`;
+
+            window.open(url, "_blank");
+        }
+    </script>
+
+</body>
+</html>
